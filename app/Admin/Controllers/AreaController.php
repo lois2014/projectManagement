@@ -27,10 +27,10 @@ class AreaController extends Controller
 	{
 		$parent_code = $request->input('q');
 		$parent = substr($parent_code, 0, 4);
-		$data = Area::where('level', '3')->where('code', 'like', $parent . '%')->select([\DB::raw('code as id'), \DB::raw('name as text')])->get();
-		if ($data->isEmpty()) {
-			$data = Area::where('code', $parent_code)->select([\DB::raw('code as id'), \DB::raw('name as text')])->get();
-		}
+		$data = Area::where('level', '3')
+		->where('code', 'like', $parent . '%')
+		->orWhere('code', $parent_code)
+		->select([\DB::raw('code as id'), \DB::raw('name as text')])->get();
 		return response()->json($data);
 	}
 

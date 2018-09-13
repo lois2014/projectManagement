@@ -46,6 +46,39 @@
 .green {
     color: #16a085;
 }
+
+.blue {
+    color: #3472ce;
+}
+
+
+div .bottom {
+    position: absolute;
+    margin: 36% 0;
+}
+
+.circle {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 25px; 
+    box-shadow: 5px 5px 5px #888888; 
+    margin: 10px 0;
+}
+
+.bg-red {
+    background-color: #ca0c16;
+}
+
+.bg-green {
+    background-color: #16a085;
+}
+
+.bg-blue {
+    background-color: #3472ce;
+}
+
+
     </style>
     <script type="text/javascript">
 
@@ -73,8 +106,17 @@ $(function(){
            <li class="<?php echo  ($category_id == $category->id ? 'active' : ''); ?> "><a href="{{ $category->id }}"> {{ $category->title }} </a></li>
             @endforeach
         </ul>
-        
     </div>
+     <div class="bottom">
+         <div class="circle bg-green"></div> 
+         <div style="position: relative;">&nbsp;&nbsp;未建</div> 
+         <div class="circle bg-blue"></div> 
+         <div style="position: relative;">&nbsp;&nbsp;待建</div>
+         <div class="circle bg-red"></div> 
+         <div style="position: relative;">&nbsp;&nbsp;已建</div>
+     </div>
+
+    
 </div>
 <!-- 分类侧栏 end -->
 
@@ -259,8 +301,9 @@ $(function() {
             + "<br/><b>常住人口</b>：" + content.population + " 万"
             + "<br/><b>进度</b>：" + (content.schedule ? content.schedule : "-")
             + "<br/><b>状态</b>：" + content.status_text
-            + "<br/><b>投资商</b>：" + (content.investor ? content.investor : "-")
+            + "<br/><b>供应商</b>：" + (content.investor ? content.investor : "-")
             + "<br/><b>规模</b>：" + (content.size ? content.size : "-")
+            + "<br/><b>备注</b>：" + (content.remark ? content.remark : "-")
             + "</span>";
                 addMarker(i, geocode[i], index, resultStr, content);
             }else {

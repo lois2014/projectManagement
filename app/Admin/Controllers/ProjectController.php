@@ -71,7 +71,7 @@ class ProjectController extends Controller
     protected function grid()
     {
         return Admin::grid(Project::class, function (Grid $grid) {
-
+            $grid->disableExport();
             $grid->id('ID')->sortable();
             $grid->title('标题');
             $grid->population('常住人口');
@@ -82,13 +82,14 @@ class ProjectController extends Controller
             $grid->status_text('状态');
             $grid->category_text('分类');
             $grid->area_text('地区');
+            $grid->remark('备注');
             $states = [
                 'on' => ['text' => 'YES', 'value' => '1'],
                 'off' => ['text' => 'NO', 'value' => '0'],
             ];
             $grid->release('是否发布')->switch($states);
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->created_at('创建时间');
+            $grid->updated_at('更新时间');
         });
     }
 
@@ -109,6 +110,7 @@ class ProjectController extends Controller
             $form->text('title', '名称')->rules('required');
             $form->text('investor', '供应商');
             $form->text('schedule', '进度');
+            $form->text('size', '规模');
             $form->number('population', '常住人口(万)');
             $form->select('category_id', '分类')->options(Category::selectOptions());
             $form->select('status', '状态')->options(Project::$statusText);
@@ -121,6 +123,7 @@ class ProjectController extends Controller
                 'off' => ['text' => 'NO', 'value' => '0'],
             ];
             $form->switch('release', '是否发布')->options($states);
+            $form->textarea('remark', '备注');
             $form->display('created_at', '创建时间');
             $form->display('updated_at', '更新时间');
         });
