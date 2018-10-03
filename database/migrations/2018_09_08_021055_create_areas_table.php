@@ -14,7 +14,7 @@ class CreateAreasTable extends Migration
     public function up()
     {
        Schema::create('areas', function (Blueprint $table) {
-            $table->primary('id');
+            $table->increments('id');
             $table->integer('code')->comment("行政代码");
             $table->string("name", 20)->comment("地区名称");
             $table->enum("level", ['1','2','3'])->default('1')->comment("地区级别 1-省 2-直辖市 3-地级市");
