@@ -14,4 +14,4 @@
 Route::get('/', function () {
 	return redirect(route('map.index', ['category_id' => 'all']));
 });
-Route::get('/{category_id}', 'mapController@index')->name('map.index');
+Route::get('/{category_id}', 'MapController@index')->name('map.index');
