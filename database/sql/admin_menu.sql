@@ -15,7 +15,7 @@ CREATE TABLE `admin_menu`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -28,5 +28,4 @@ INSERT INTO `admin_menu` VALUES (5, 2, 5, '权限', 'fa-ban', 'auth/permissions'
 INSERT INTO `admin_menu` VALUES (6, 2, 6, '菜单', 'fa-bars', 'auth/menu', NULL, '2018-09-10 13:34:43');
 INSERT INTO `admin_menu` VALUES (8, 0, 0, '项目管理', 'fa-bars', '/projects', '2018-09-08 04:35:21', '2018-09-08 04:35:21');
 INSERT INTO `admin_menu` VALUES (9, 0, 0, '分类管理', 'fa-certificate', '/categories', '2018-09-08 06:35:25', '2018-09-08 06:35:25');
-
-SET FOREIGN_KEY_CHECKS = 1;
+INSERT INTO `admin_menu` VALUES (10, 0, 0, '用户管理', 'fa-users', '/users', '2018-10-14 14:14:40', '2018-10-14 14:14:40');

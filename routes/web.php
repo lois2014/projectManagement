@@ -14,4 +14,7 @@
 Route::get('/', function () {
 	return redirect(route('map.index', ['category_id' => 'all']));
 });
-Route::get('/{category_id}', 'MapController@index')->name('map.index');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login.show');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::middleware('auth')->get('/{category_id}', 'MapController@index')->name('map.index');
+

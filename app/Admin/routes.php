@@ -12,6 +12,7 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('/projects', 'ProjectController');
     $router->resource('/categories', 'CategoryController');
+    $router->resource('/users', 'UserController');
     $router->get('/provinces', 'AreaController@provinces')->name('provinces');
     $router->get('/cities', 'AreaController@cities')->name('cities'); 
     $router->get('/areas', 'AreaController@areas')->name('areas');

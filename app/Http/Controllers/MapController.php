@@ -9,13 +9,14 @@ class MapController extends Controller
 	public function index($category_id)
 	{
 		$conditions = [
-			'release' => 1		
+			'release' => 1 //已发布
 		];
+		//分类 all-全部 或者 id
 		$category_id != 'all' ? $conditions['category_id'] = $category_id : '';
 		$projects = Project::where($conditions)->orderBy('id', 'desc')->get();
-		$list = [];
-		$count = [];
-		$count_array = [];
+		$list = []; //项目列表
+		$count = []; //项目数量
+		$count_array = [];//项目综合列表
 		foreach ($projects as $project) {
 			$province = substr($project->area_code, 0, 2) . '0000';
 			$list[$province][] = $project;
