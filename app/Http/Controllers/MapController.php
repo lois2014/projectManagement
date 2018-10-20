@@ -14,6 +14,12 @@ class MapController extends Controller
 		//分类 all-全部 或者 id
 		$category_id != 'all' ? $conditions['category_id'] = $category_id : '';
 		$projects = Project::where($conditions)->orderBy('id', 'desc')->get();
+		$projectStatus = Project::select(\DB::raw('count(id) as count, status'))->where($conditions)->groupBy('status')->get();
+		$statusMap = array_column($projectStatus->toArray(), 'count', 'status');
+
+		for ($i = 0; $i < 3; $i++) {
+			$statusMap[$i] = $statusMap[$i] ?? 0;
+		}
 		$list = []; //项目列表
 		$count = []; //项目数量
 		$count_array = [];//项目综合列表
@@ -28,6 +34,11 @@ class MapController extends Controller
 			$count_array[$province]['name'] = Area::text($province); 
 		}
 		// dd($count_array);
-		return view('map.index', ['projects' => json_encode($list), 'count' => $count_array, 'categories' => Category::where('parent_id', 0)->get(), 'category_id' => $category_id]);
+		return view('map.index', [
+			'projects' => json_encode($list), 
+			'count' => $count_array, 
+			'categories' => Category::where('parent_id', 0)->get(), 'category_id' => $category_id,
+			'statusMap' => $statusMap,
+		]);
 	}
 }

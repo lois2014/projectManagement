@@ -109,11 +109,11 @@ $(function(){
     </div>
      <div class="bottom">
          <div class="circle bg-green"></div> 
-         <div style="position: relative;">&nbsp;&nbsp;未建</div> 
+         <div style="position: relative;">&nbsp;&nbsp;未建&nbsp;&nbsp;({{ $statusMap[0] }})</div> 
          <div class="circle bg-blue"></div> 
-         <div style="position: relative;">&nbsp;&nbsp;待建</div>
+         <div style="position: relative;">&nbsp;&nbsp;待建&nbsp;&nbsp;({{ $statusMap[1] }})</div>
          <div class="circle bg-red"></div> 
-         <div style="position: relative;">&nbsp;&nbsp;已建</div>
+         <div style="position: relative;">&nbsp;&nbsp;已建&nbsp;&nbsp;({{ $statusMap[2] }})</div>
      </div>
 
     
